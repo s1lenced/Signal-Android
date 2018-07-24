@@ -76,8 +76,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:9.6.1'
     compile 'com.google.android.gms:play-services-places:9.6.1'
 
-    compile 'com.google.android.exoplayer:exoplayer-core:2.8.4'
-    compile 'com.google.android.exoplayer:exoplayer-ui:2.8.4'
+    compile 'com.google.android.exoplayer:exoplayer-core:2.9.1'
+    compile 'com.google.android.exoplayer:exoplayer-ui:2.9.1'
 
     compile 'org.whispersystems:signal-service-android:2.12.1'
     compile 'org.whispersystems:webrtc-android:M69'
@@ -172,8 +172,6 @@ dependencyVerification {
         'com.google.android.gms:play-services-gcm:312e61253a236f2d9b750b9c04fc92fd190d23b0b2755c99de6ce4a28b259dae',
         'com.google.android.gms:play-services-places:abf3a4a3b146ec7e6e753be62775e512868cf37d6f88ffe2d81167b33b57132b',
         'com.google.android.gms:play-services-maps:45e8021e7ddac4a44a82a0e9698991389ded3023d35c58f38dbd86d54211ec0e',
-        'com.google.android.exoplayer:exoplayer-ui:027557b2d69b15e1852a2530b36971f0dcc177abae240ee35e05f63502cdb0a7',
-        'com.google.android.exoplayer:exoplayer-core:e69b409e11887c955deb373357c30eeabf183395db0092b4817e0f80bb467d5b',
         'org.whispersystems:signal-service-android:6c3a120165c88fda933cf958652da0edc48cdac02a56c11cc7103dbce8ee5a8f',
         'org.whispersystems:webrtc-android:5493c92141ce884fc5ce8240d783232f4fe14bd17a8d0d7d1bd4944d0bd1682f',
         'me.leolin:ShortcutBadger:e3cb3e7625892129b0c92dd5e4bc649faffdd526d5af26d9c45ee31ff8851774',
@@ -181,6 +179,8 @@ dependencyVerification {
         'com.jpardogo.materialtabstrip:library:c6ef812fba4f74be7dc4a905faa4c2908cba261a94c13d4f96d5e67e4aad4aaa',
         'org.apache.httpcomponents:httpclient-android:6f56466a9bd0d42934b90bfbfe9977a8b654c058bf44a12bdc2877c4e1f033f1',
         'com.github.chrisbanes:PhotoView:ed06775308da260e1fd86d1d3288988fcd3d80db24ce0d7c9fcfedc39e622292',
+        'com.google.android.exoplayer:exoplayer-ui:7a942afcc402ff01e9bf48e8d3942850986710f06562d50a1408aaf04a683151',
+        'com.google.android.exoplayer:exoplayer-core:b6ab34abac36bc2bc6934b7a50008162feca2c0fde91aaf1e8c1c22f2c16e2c0',
         'com.github.bumptech.glide:glide:997de7ac95be6c944d3b8cbe13de11307736ea45451c1b09a6cec7c328ead59f',
         'com.makeramen:roundedimageview:1f5a1865796b308c6cdd114acc6e78408b110f0a62fc63553278fbeacd489cd1',
         'org.greenrobot:eventbus:180d4212467df06f2fbc9c8d8a2984533ac79c87769ad883bc421612f0b4e17c',
