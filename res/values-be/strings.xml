@@ -472,5 +472,6 @@
   <string name="RegistrationActivity_too_many_attempts">Зашмат спробаў</string>
   <string name="RegistrationLockDialog_disable">Выключыць</string>
   <string name="RegistrationActivity_continue">Працягнуць</string>
-  <!--EOF-->
+    <string name="user_activity_user_name">Name</string>
+    <!--EOF-->
 </resources>

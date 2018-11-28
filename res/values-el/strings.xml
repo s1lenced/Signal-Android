@@ -1196,5 +1196,6 @@
   <string name="prompt_passphrase_activity__tap_to_unlock">ΠΑΤΗΣΤΕ ΓΙΑ ΞΕΚΛΕΙΔΩΜΑ</string>
   <string name="RegistrationLockDialog_reminder">Υπενθύμιση:</string>
   <string name="recipient_preferences__about">Πληροφορίες</string>
-  <!--EOF-->
+    <string name="user_activity_user_name">Name</string>
+    <!--EOF-->
 </resources>

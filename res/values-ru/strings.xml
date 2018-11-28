@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <string name="app_name">Signal</string>
+  <string name="app_name">Circle</string>
   <string name="yes">Да</string>
   <string name="no">Нет</string>
   <string name="delete">Удалить</string>
@@ -910,7 +910,7 @@
   <string name="AndroidManifest__media_preview">Предпросмотр</string>
   <string name="AndroidManifest__message_details">Подробности сообщения</string>
   <string name="AndroidManifest__linked_devices">Привязанные устройства</string>
-  <string name="AndroidManifest__invite_friends">Пригласить друзей в Signal</string>
+  <string name="AndroidManifest__invite_friends">Пригласить друзей в Circle</string>
   <string name="AndroidManifest_archived_conversations">Архивированные разговоры</string>
   <string name="AndroidManifest_remove_photo">Удалить фото</string>
   <!--arrays.xml-->
@@ -966,6 +966,7 @@
   <string name="preferences__inactivity_timeout_passphrase">Парольная фраза при бездействии</string>
   <string name="preferences__inactivity_timeout_interval">Интервал бездействия</string>
   <string name="preferences__notifications">Уведомления</string>
+  <string name="preferences__admin_panel">Панель администратора</string>
   <string name="preferences__system_notification_settings">Настройки системных уведомлений</string>
   <string name="preferences__led_color">Цвет светодиода</string>
   <string name="preferences__led_color_unknown">Неизвестен</string>
@@ -1113,7 +1114,7 @@
   <string name="text_secure_normal__menu_settings">Настройки</string>
   <string name="text_secure_normal__menu_clear_passphrase">Заблокировать</string>
   <string name="text_secure_normal__mark_all_as_read">Отметить все как прочитанные</string>
-  <string name="text_secure_normal__invite_friends">Пригласить друзей в Signal</string>
+  <string name="text_secure_normal__invite_friends">Пригласить друзей в Circle</string>
   <string name="text_secure_normal__help">Помощь</string>
   <!--verify_display_fragment-->
   <string name="verify_display_fragment_context_menu__copy_to_clipboard">Копировать в буфер обмена</string>
@@ -1248,5 +1249,11 @@
   <string name="prompt_passphrase_activity__tap_to_unlock">КОСНИТЕСЬ, ЧТОБЫ РАЗБЛОКИРОВАТЬ</string>
   <string name="RegistrationLockDialog_reminder">Напоминание:</string>
   <string name="recipient_preferences__about">О Signal</string>
-  <!--EOF-->
+    <string name="user_activity_user_name">Name</string>
+
+  <string-array name="role_keys">
+    <item>User</item>
+    <item>Admin</item>
+  </string-array>
+    <!--EOF-->
 </resources>

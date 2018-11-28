@@ -1161,5 +1161,6 @@
   <string name="prompt_passphrase_activity__tap_to_unlock">НАТИСНЕТЕ ЗА ОТКЛЮЧВАНЕ</string>
   <string name="RegistrationLockDialog_reminder">Напомняне:</string>
   <string name="recipient_preferences__about">Относно</string>
-  <!--EOF-->
+    <string name="user_activity_user_name">Name</string>
+    <!--EOF-->
 </resources>

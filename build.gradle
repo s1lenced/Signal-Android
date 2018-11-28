@@ -147,6 +147,9 @@ dependencies {
         exclude group: 'org.hamcrest',        module: 'hamcrest-core'
         exclude group: 'com.android.support', module: 'support-annotations'
     }
+
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 }
 
 dependencyVerification {
@@ -281,6 +284,7 @@ android {
     }
 
     defaultConfig {
+        /*applicationId 'org.thoughtcrime.circle'*/
         versionCode 425
         versionName "4.30.3"
 
@@ -325,7 +329,7 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
                           'proguard-google-play-services.pro',
                           'proguard-dagger.pro',
@@ -350,7 +354,7 @@ android {
                           'proguard.cfg'
         }
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles = buildTypes.debug.proguardFiles
         }
     }

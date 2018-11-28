@@ -21,6 +21,7 @@ import android.arch.lifecycle.DefaultLifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.ProcessLifecycleOwner;
 import android.content.Context;
+import android.database.MatrixCursor;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -46,6 +47,8 @@ import org.thoughtcrime.securesms.logging.PersistentLogger;
 import org.thoughtcrime.securesms.logging.UncaughtExceptionLogger;
 import org.thoughtcrime.securesms.notifications.NotificationChannels;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
+import org.thoughtcrime.securesms.registerService.RegisterService;
+import org.thoughtcrime.securesms.registerService.entity.ContactFromApi;
 import org.thoughtcrime.securesms.service.DirectoryRefreshListener;
 import org.thoughtcrime.securesms.service.ExpiringMessageManager;
 import org.thoughtcrime.securesms.service.IncomingMessageObserver;
@@ -61,13 +64,22 @@ import org.webrtc.voiceengine.WebRtcAudioManager;
 import org.webrtc.voiceengine.WebRtcAudioUtils;
 import org.whispersystems.libsignal.logging.SignalProtocolLoggerProvider;
 
+import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import androidx.work.Configuration;
 import androidx.work.WorkManager;
 import dagger.ObjectGraph;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Will be called once when the TextSecure process is created.
@@ -81,11 +93,15 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
 
   private static final String TAG = ApplicationContext.class.getSimpleName();
 
+  private static RegisterService  sService;
   private ExpiringMessageManager  expiringMessageManager;
   private JobManager              jobManager;
   private IncomingMessageObserver incomingMessageObserver;
   private ObjectGraph             objectGraph;
   private PersistentLogger        persistentLogger;
+  private static List<ContactFromApi>     mContacts;
+
+  private static ApplicationContext sInstance;
 
   private volatile boolean isAppVisible;
 
@@ -111,8 +127,27 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
     initializeWebRtc();
     initializePendingMessages();
     initializeUnidentifiedDeliveryAbilityRefresh();
+    initializeRetrofit();
     NotificationChannels.create(this);
     ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
+  }
+
+  private void initializeRetrofit() {
+    OkHttpClient client = new OkHttpClient.Builder()
+            .addInterceptor(chain -> {
+              Request request = chain.request();
+              HttpUrl url = request.url().newBuilder().build();
+              request = request.newBuilder().url(url).build();
+              android.util.Log.d("test", url.toString());
+              return chain.proceed(request);
+            }).build();
+
+    Retrofit mRetrofit = new Retrofit.Builder()
+            .baseUrl("https://circle-messenger.herokuapp.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build();
+    sService = mRetrofit.create(RegisterService.class);
   }
 
   @Override
@@ -288,5 +323,25 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
     if (TextSecurePreferences.isMultiDevice(this) && !TextSecurePreferences.isUnidentifiedDeliveryEnabled(this)) {
       jobManager.add(new RefreshUnidentifiedDeliveryAbilityJob(this));
     }
+  }
+
+  public ApplicationContext() {
+      sInstance = this;
+  }
+
+  public static ApplicationContext getInstance() {
+      return sInstance;
+  }
+
+  public RegisterService getService() {
+    return sService;
+  }
+
+  public static void setContactsFromApi(List<ContactFromApi> contacts) {
+    mContacts = contacts;
+  }
+
+  public static List<ContactFromApi> getContactsFromApi() {
+    return mContacts;
   }
 }

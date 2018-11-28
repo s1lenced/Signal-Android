@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_admin_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add_white_original_24dp"
+        android:focusable="true"
+        android:contentDescription="@string/admin_panel_pref_fragment__give_your_inbox_something_to_write_home_about_get_started_by_messaging_a_friend"/>
+
+</FrameLayout>

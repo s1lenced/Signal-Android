@@ -1058,5 +1058,6 @@ Modtog en nøgle-besked for en ugyldig protokol-version.
   <string name="RegistrationActivity_continue">Fortsæt</string>
   <string name="prompt_passphrase_activity__signal_is_locked">Signal er låst</string>
   <string name="recipient_preferences__about">Om</string>
-  <!--EOF-->
+    <string name="user_activity_user_name">Name</string>
+    <!--EOF-->
 </resources>

@@ -1258,5 +1258,6 @@
   <string name="prompt_passphrase_activity__tap_to_unlock">أنقُر لفك القُفل</string>
   <string name="RegistrationLockDialog_reminder">تذكير :</string>
   <string name="recipient_preferences__about">حول</string>
-  <!--EOF-->
+    <string name="user_activity_user_name">Name</string>
+    <!--EOF-->
 </resources>
