@@ -159,6 +159,11 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
             if (VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                 tintIcons(getActivity());
             }
+
+            if (!TextSecurePreferences.isAdmin(getContext())) {
+                this.findPreference(PREFERENCE_CATEGORY_ADMIN_PANEL)
+                        .setVisible(false);
+            }
         }
 
         @Override

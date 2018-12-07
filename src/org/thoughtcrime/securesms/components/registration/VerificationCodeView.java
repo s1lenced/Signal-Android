@@ -66,7 +66,7 @@ public class VerificationCodeView extends FrameLayout {
     TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.VerificationCodeView);
 
     try {
-      TextView separator = findViewById(R.id.separator);
+      //TextView separator = findViewById(R.id.separator);
 
       this.spaces.add(findViewById(R.id.space_zero));
       this.spaces.add(findViewById(R.id.space_one));
@@ -74,6 +74,11 @@ public class VerificationCodeView extends FrameLayout {
       this.spaces.add(findViewById(R.id.space_three));
       this.spaces.add(findViewById(R.id.space_four));
       this.spaces.add(findViewById(R.id.space_five));
+      this.spaces.add(findViewById(R.id.space_six));
+      this.spaces.add(findViewById(R.id.space_seven));
+      this.spaces.add(findViewById(R.id.space_eight));
+      this.spaces.add(findViewById(R.id.space_nine));
+      this.spaces.add(findViewById(R.id.space_ten));
 
       this.codes.add(findViewById(R.id.code_zero));
       this.codes.add(findViewById(R.id.code_one));
@@ -81,14 +86,24 @@ public class VerificationCodeView extends FrameLayout {
       this.codes.add(findViewById(R.id.code_three));
       this.codes.add(findViewById(R.id.code_four));
       this.codes.add(findViewById(R.id.code_five));
+      this.codes.add(findViewById(R.id.code_six));
+      this.codes.add(findViewById(R.id.code_seven));
+      this.codes.add(findViewById(R.id.code_eight));
+      this.codes.add(findViewById(R.id.code_nine));
+      this.codes.add(findViewById(R.id.code_ten));
 
       this.containers.add(findViewById(R.id.container_zero));
       this.containers.add(findViewById(R.id.container_one));
       this.containers.add(findViewById(R.id.container_two));
-      this.containers.add(findViewById(R.id.separator_container));
+//      this.containers.add(findViewById(R.id.separator_container));
       this.containers.add(findViewById(R.id.container_three));
       this.containers.add(findViewById(R.id.container_four));
       this.containers.add(findViewById(R.id.container_five));
+      this.containers.add(findViewById(R.id.container_six));
+      this.containers.add(findViewById(R.id.container_seven));
+      this.containers.add(findViewById(R.id.container_eight));
+      this.containers.add(findViewById(R.id.container_nine));
+      this.containers.add(findViewById(R.id.container_ten));
 
       Stream.of(spaces).forEach(view -> view.setBackgroundColor(typedArray.getColor(R.styleable.VerificationCodeView_vcv_inputColor, Color.BLACK)));
       Stream.of(spaces).forEach(view -> view.setLayoutParams(new LinearLayout.LayoutParams(typedArray.getDimensionPixelSize(R.styleable.VerificationCodeView_vcv_inputWidth, ViewUtil.dpToPx(context, 20)),
@@ -103,7 +118,7 @@ public class VerificationCodeView extends FrameLayout {
         view.setLayoutParams(params);
       });
 
-      separator.setTextSize(TypedValue.COMPLEX_UNIT_SP, typedArray.getDimension(R.styleable.VerificationCodeView_vcv_textSize, 30));
+      //separator.setTextSize(TypedValue.COMPLEX_UNIT_SP, typedArray.getDimension(R.styleable.VerificationCodeView_vcv_textSize, 30));
     } finally {
       if (typedArray != null) typedArray.recycle();
     }

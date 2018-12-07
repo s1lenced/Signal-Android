@@ -1201,10 +1201,10 @@
   <string name="ChatsPreferenceFragment_in_progress">В процессе</string>
   <string name="LocalBackupJob_creating_backup">Создание резервной копии...</string>
   <string name="ProgressPreference_d_messages_so_far">еще %d сообщений</string>
-  <string name="RegistrationActivity_verify_s">Подтвердить %s</string>
-  <string name="RegistrationActivity_please_enter_the_verification_code_sent_to_s">Пожалуйста, введите проверочный код, отправленный на %s.</string>
-  <string name="RegistrationActivity_wrong_number">Неправильный номер?</string>
-  <string name="RegistrationActivity_call_me_instead">Позвонить мне вместо этого</string>
+  <string name="RegistrationActivity_verify_s">Введите индивидуальный код</string>
+  <string name="RegistrationActivity_please_enter_the_verification_code_sent_to_s">Пожалуйста, введите Ваш индивидуальный код, полученный от Администратора.</string>
+  <string name="RegistrationActivity_wrong_number">Неправильный код?</string>
+  <string name="RegistrationActivity_call_me_instead">Запросить код</string>
   <string name="RegistrationActivity_available_in">Доступно в:\u0020</string>
   <string name="BackupUtil_never">Никогда</string>
   <string name="BackupUtil_unknown">Неизвестно</string>
@@ -1250,6 +1250,11 @@
   <string name="RegistrationLockDialog_reminder">Напоминание:</string>
   <string name="recipient_preferences__about">О Signal</string>
     <string name="user_activity_user_name">Name</string>
+    <string name="user_activity_add_user_to_server_finish">Close</string>
+    <string name="user_activity_users_update_fail">Something gone wrong!</string>
+  <string name="join_fragment_join_button">Join</string>
+    <string name="join_fragment_name_empty_error">Please, write yout name!</string>
+  <string name="join_fragment_surname_empty_error">Please, write your surname!</string>
 
   <string-array name="role_keys">
     <item>User</item>

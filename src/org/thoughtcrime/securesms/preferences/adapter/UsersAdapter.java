@@ -11,36 +11,65 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.registerService.entity.ContactFromApi;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHolder> {
+public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<ContactFromApi> contacts = new ArrayList<>();
+    private List<ListItem> items = Collections.emptyList();
     private UserClickListener listener;
 
     @NonNull
     @Override
-    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new UserViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.user_item, viewGroup, false));
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        switch (i) {
+            case ListItem.TYPE_HEADER:
+                return new StatusViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_status, viewGroup, false));
+            case ListItem.TYPE_ITEM:
+                return new UserViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.user_item, viewGroup, false));
+            default:
+                throw new IllegalStateException("unsupported item type");
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder userViewHolder, int i) {
-        userViewHolder.bind(contacts.get(i));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+        int viewType = getItemViewType(i);
+        switch (viewType) {
+            case ListItem.TYPE_HEADER: {
+                HeaderItem header = (HeaderItem) items.get(i);
+                StatusViewHolder holder = (StatusViewHolder) viewHolder;
+                holder.bind(header.getStatus());
+                break;
+            }
+            case ListItem.TYPE_ITEM: {
+                EventItem event = (EventItem) items.get(i);
+                UserViewHolder holder = (UserViewHolder) viewHolder;
+                holder.bind(event.getContact());
+                break;
+            }
+            default:
+                throw new IllegalStateException("unsupported item type");
+        }
     }
 
     @Override
     public int getItemCount() {
-        if (contacts == null) return 0;
-        else return contacts.size();
+        if (items == null) return 0;
+        else return items.size();
     }
 
-    public List<ContactFromApi> getContacts() {
-        return contacts;
+    @Override
+    public int getItemViewType(int position) {
+        return items.get(position).getType();
     }
 
-    public void setContacts(List<ContactFromApi> contacts) {
-        this.contacts = contacts;
+    public List<ListItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ListItem> items) {
+        this.items = items;
     }
 
     public void setListener(UserClickListener listener) {
@@ -49,22 +78,35 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
         private TextView tvName;
-        private TextView tvStatus;
+        private TextView tvSurName;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tv_user_name);
-            tvStatus = itemView.findViewById(R.id.tv_user_status);
+            tvSurName = itemView.findViewById(R.id.tv_user_surname);
         }
 
         public void bind(ContactFromApi contact) {
             tvName.setText(contact.getName());
-            tvStatus.setText(contact.getStatus());
+            tvSurName.setText(contact.getSurname());
             itemView.setOnClickListener(v -> listener.onUserClick(contact));
         }
     }
 
-    public interface UserClickListener{
+    public class StatusViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvStatus;
+
+        public StatusViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvStatus = itemView.findViewById(R.id.tv_status);
+        }
+
+        public void bind(String status) {
+            tvStatus.setText(status.toUpperCase());
+        }
+    }
+
+    public interface UserClickListener {
         void onUserClick(ContactFromApi contact);
     }
 }

@@ -5,7 +5,7 @@
     <org.thoughtcrime.securesms.preferences.widgets.ProfilePreference android:key="preference_category_profile" />
 
     <Preference
-        android:icon="@drawable/ic_person_white_24dp"
+        android:icon="@drawable/ic_user"
         android:key="preference_category_admin_panel"
         android:title="@string/preferences__admin_panel" />
 

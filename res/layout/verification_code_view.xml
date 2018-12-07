@@ -67,7 +67,7 @@
 
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/separator_container"
+    <!--<LinearLayout android:id="@+id/separator_container"
                   android:orientation="vertical"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
               android:layout_width="20dp"
               android:layout_height="1dp"/>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
     <LinearLayout android:id="@+id/container_three"
                   android:orientation="vertical"
@@ -148,6 +148,110 @@
               android:layout_width="20dp"
               android:layout_height="1dp"
               android:background="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/container_six"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="5dp">
+
+        <TextView android:id="@+id/code_six"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="2"/>
+
+        <View android:id="@+id/space_six"
+            android:layout_width="20dp"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/container_seven"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="5dp">
+
+        <TextView android:id="@+id/code_seven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="2"/>
+
+        <View android:id="@+id/space_seven"
+            android:layout_width="20dp"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/container_eight"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="5dp">
+
+        <TextView android:id="@+id/code_eight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="2"/>
+
+        <View android:id="@+id/space_eight"
+            android:layout_width="20dp"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/container_nine"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="5dp">
+
+        <TextView android:id="@+id/code_nine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="2"/>
+
+        <View android:id="@+id/space_nine"
+            android:layout_width="20dp"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/container_ten"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="5dp">
+
+        <TextView android:id="@+id/code_ten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="2"/>
+
+        <View android:id="@+id/space_ten"
+            android:layout_width="20dp"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
 
     </LinearLayout>
 

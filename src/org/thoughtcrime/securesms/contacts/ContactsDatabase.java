@@ -146,49 +146,49 @@ public class ContactsDatabase {
     @SuppressLint("Recycle")
     public @NonNull
     Cursor querySystemContacts(@Nullable String filter) {
-    Uri uri;
+        Uri uri;
 
-    if (!TextUtils.isEmpty(filter)) {
-      uri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI, Uri.encode(filter));
-    } else {
-      uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-    }
+        if (!TextUtils.isEmpty(filter)) {
+            uri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI, Uri.encode(filter));
+        } else {
+            uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+        }
 
-    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      uri = uri.buildUpon().appendQueryParameter(ContactsContract.REMOVE_DUPLICATE_ENTRIES, "true").build();
-    }
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            uri = uri.buildUpon().appendQueryParameter(ContactsContract.REMOVE_DUPLICATE_ENTRIES, "true").build();
+        }
 
-    String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                                       ContactsContract.CommonDataKinds.Phone.NUMBER,
-                                       ContactsContract.CommonDataKinds.Phone.TYPE,
-                                       ContactsContract.CommonDataKinds.Phone.LABEL};
+        String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Phone.NUMBER,
+                ContactsContract.CommonDataKinds.Phone.TYPE,
+                ContactsContract.CommonDataKinds.Phone.LABEL};
 
-    String sort = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
+        String sort = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
 
-    Map<String, String> projectionMap = new HashMap<String, String>() {{
-      put(NAME_COLUMN, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
-      put(NUMBER_COLUMN, ContactsContract.CommonDataKinds.Phone.NUMBER);
-      put(NUMBER_TYPE_COLUMN, ContactsContract.CommonDataKinds.Phone.TYPE);
-      put(LABEL_COLUMN, ContactsContract.CommonDataKinds.Phone.LABEL);
-    }};
+        Map<String, String> projectionMap = new HashMap<String, String>() {{
+            put(NAME_COLUMN, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+            put(NUMBER_COLUMN, ContactsContract.CommonDataKinds.Phone.NUMBER);
+            put(NUMBER_TYPE_COLUMN, ContactsContract.CommonDataKinds.Phone.TYPE);
+            put(LABEL_COLUMN, ContactsContract.CommonDataKinds.Phone.LABEL);
+        }};
 
-    String formattedNumber = "REPLACE(REPLACE(REPLACE(REPLACE(data1,' ',''),'-',''),'(',''),')','')";
-    String excludeSelection = "(" + formattedNumber +" NOT IN " +
-            "(SELECT data1 FROM view_data WHERE "+formattedNumber+" = data1) " +
-            "OR "+formattedNumber+" = data1)" +
-            "AND " + formattedNumber + "NOT IN (SELECT "+formattedNumber+" FROM view_data where mimetype = '"+CONTACT_MIMETYPE+"')" ;
+        String formattedNumber = "REPLACE(REPLACE(REPLACE(REPLACE(data1,' ',''),'-',''),'(',''),')','')";
+        String excludeSelection = "(" + formattedNumber + " NOT IN " +
+                "(SELECT data1 FROM view_data WHERE " + formattedNumber + " = data1) " +
+                "OR " + formattedNumber + " = data1)" +
+                "AND " + formattedNumber + "NOT IN (SELECT " + formattedNumber + " FROM view_data where mimetype = '" + CONTACT_MIMETYPE + "')";
 
-    String fallbackSelection = ContactsContract.Data.SYNC2 + " IS NULL OR " + ContactsContract.Data.SYNC2 + " != '" + SYNC + "'";
+        String fallbackSelection = ContactsContract.Data.SYNC2 + " IS NULL OR " + ContactsContract.Data.SYNC2 + " != '" + SYNC + "'";
 
-    Cursor cursor;
+        Cursor cursor;
 
-    try {
-      cursor = context.getContentResolver().query(uri, projection, excludeSelection, null, sort);
-    } catch (Exception e) {
-      Log.w(TAG, e);
-      cursor = context.getContentResolver().query(uri, projection, fallbackSelection, null, sort);
-    }
-    return new ProjectionMappingCursor(cursor, projectionMap, new Pair<>(CONTACT_TYPE_COLUMN, NORMAL_TYPE));
+        try {
+            cursor = context.getContentResolver().query(uri, projection, excludeSelection, null, sort);
+        } catch (Exception e) {
+            Log.w(TAG, e);
+            cursor = context.getContentResolver().query(uri, projection, fallbackSelection, null, sort);
+        }
+        return new ProjectionMappingCursor(cursor, projectionMap, new Pair<>(CONTACT_TYPE_COLUMN, NORMAL_TYPE));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -205,7 +205,7 @@ public class ContactsDatabase {
             put(NUMBER_COLUMN, ContactsContract.Data.DATA1);
         }};
 
-        MatrixCursor cursor = new MatrixCursor(new String[]{"_id", "number", "name", "email", "role", "status"});
+        MatrixCursor cursor = new MatrixCursor(new String[]{"_id", "number", "name", "email", "role", "reg_status"});
 
         /*if (TextUtils.isEmpty(filter)) {
             cursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI,
@@ -226,10 +226,10 @@ public class ContactsDatabase {
                 new Pair<>(LABEL_COLUMN, "TextSecure"),
                 new Pair<>(NUMBER_TYPE_COLUMN, 0),
                 new Pair<>(CONTACT_TYPE_COLUMN, PUSH_TYPE));*/
-
-        List<ContactFromApi> ableContacts = ApplicationContext.getContactsFromApi();
-        for (ContactFromApi contact : ableContacts) {
-            if (!contact.getStatus().equals("not_verified")) {
+        List<ContactFromApi> contacts = ApplicationContext.getContactsFromApi();
+        List<ContactFromApi> ableContacts = new ArrayList<>();
+        for (ContactFromApi contact : contacts) {
+            if (contact.getRegStatus().equals("accepted")) {
                 ableContacts.add(contact);
             }
         }
@@ -244,7 +244,7 @@ public class ContactsDatabase {
                     .add("name", contact.getName())
                     .add("email", contact.getEmail())
                     .add("role", contact.getRole())
-                    .add("status", contact.getStatus());
+                    .add("reg_status", contact.getRegStatus());
         }
 
 

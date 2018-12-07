@@ -55,6 +55,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.notifications.MarkReadReceiver;
 import org.thoughtcrime.securesms.notifications.MessageNotifier;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.preferences.UserActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.registerService.entity.ContactFromApi;
 import org.thoughtcrime.securesms.search.SearchFragment;
@@ -121,12 +122,27 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
                 if (response.body() != null) {
                     ApplicationContext.setContactsFromApi(response.body());
                 }
-
             }
 
             @Override
             public void onFailure(Call<List<ContactFromApi>> call, Throwable t) {
-                throw new IllegalArgumentException(t);
+                Toast.makeText(ConversationListActivity.this, getResources().getString(R.string.conversation_activity__users_get_error), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ApplicationContext.getInstance().getService().singleUser(TextSecurePreferences.getLocalNumber(this)).enqueue(new Callback<ContactFromApi>() {
+            @Override
+            public void onResponse(Call<ContactFromApi> call, Response<ContactFromApi> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    if (response.body().getRole().toLowerCase().equals("Admin".toLowerCase())){
+                        TextSecurePreferences.setIsAdmin(ConversationListActivity.this, true);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ContactFromApi> call, Throwable t) {
+
             }
         });
     }
