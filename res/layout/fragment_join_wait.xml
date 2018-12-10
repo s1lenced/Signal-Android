@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_wait_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/join_wait_fragment_wait_message"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/refreshButton"
+            app:cpb_textIdle="@string/join_wait_fragment_refresh_button"
+            app:cpb_selectorIdle="@drawable/progress_button_state"
+            app:cpb_colorIndicator="@color/white"
+            app:cpb_colorProgress="@color/textsecure_primary"
+            app:cpb_cornerRadius="50dp"
+            android:background="@color/signal_primary"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,4 +1,4 @@
--dontwarn retrofit.**
+-dontwarn com.squareup.retrofit2.**
 -keep class retrofit.** { *; }
 -keepattributes Signature
 -keepattributes Exceptions

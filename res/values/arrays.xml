@@ -296,4 +296,9 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="role_keys">
+        <item>User</item>
+        <item>Admin</item>
+    </string-array>
+
 </resources>

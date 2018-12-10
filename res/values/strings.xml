@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Signal</string>
+    <string name="app_name">Circle</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="delete">Delete</string>
@@ -1125,6 +1125,7 @@
     <string name="preferences__inactivity_timeout_passphrase">Inactivity timeout passphrase</string>
     <string name="preferences__inactivity_timeout_interval">Inactivity timeout interval</string>
     <string name="preferences__notifications">Notifications</string>
+    <string name="preferences__admin_panel">Admin panel</string>
     <string name="preferences__system_notification_settings">System notification settings</string>
     <string name="preferences__led_color">LED color</string>
     <string name="preferences__led_color_unknown">Unknown</string>
@@ -1266,6 +1267,7 @@
     <!-- conversation_list_fragment -->
     <string name="conversation_list_fragment__fab_content_description">New conversation</string>
     <string name="conversation_list_fragment__give_your_inbox_something_to_write_home_about_get_started_by_messaging_a_friend">Give your inbox something to write home about. Get started by messaging a friend.</string>
+    <string name="admin_panel_pref_fragment__give_your_inbox_something_to_write_home_about_get_started_by_messaging_a_friend">Add a new user.</string>
 
 
     <!-- conversation_secure_verified -->
@@ -1396,10 +1398,10 @@
     <string name="ChatsPreferenceFragment_in_progress">In progress</string>
     <string name="LocalBackupJob_creating_backup">Creating backup...</string>
     <string name="ProgressPreference_d_messages_so_far">%d messages so far</string>
-    <string name="RegistrationActivity_verify_s">Verify %s</string>
-    <string name="RegistrationActivity_please_enter_the_verification_code_sent_to_s">Please enter the verification code sent to %s.</string>
-    <string name="RegistrationActivity_wrong_number">Wrong number?</string>
-    <string name="RegistrationActivity_call_me_instead">Call me instead</string>
+    <string name="RegistrationActivity_verify_s">Enter Individual code</string>
+    <string name="RegistrationActivity_please_enter_the_verification_code_sent_to_s">Please enter the individual code received from admin.</string>
+    <string name="RegistrationActivity_wrong_number">Wrong code?</string>
+    <string name="RegistrationActivity_call_me_instead">Request code</string>
     <string name="RegistrationActivity_available_in">Available in:\u0020</string>
     <string name="BackupUtil_never">Never</string>
     <string name="BackupUtil_unknown">Unknown</string>
@@ -1444,6 +1446,27 @@
     <string name="prompt_passphrase_activity__tap_to_unlock">TAP TO UNLOCK</string>
     <string name="RegistrationLockDialog_reminder">Reminder:</string>
     <string name="recipient_preferences__about">About</string>
+    <string name="user_activity_user_name">Name</string>
+    <string name="user_activity_user_surname">Surname</string>
+    <string name="user_activity_user_email">Email</string>
+    <string name="user_activity_add_user_role">Role</string>
+    <string name="user_activity_add_user_to_server">Add user</string>
+    <string name="user_activity_user_added_successfully">User was successfully added</string>
+    <string name="user_activity_user_added_fail">Cannot create user!</string>
+    <string name="user_activity_add_user_to_server_finish">Close</string>
+    <string name="user_activity_add_button_update">Update user</string>
+    <string name="user_activity_users_update_fail">Something gone wrong!</string>
+    <string name="conversation_activity__users_get_error">Cannot download users!</string>
+    <string name="user_activity_user_update_fail">Cannot update user</string>
+    <string name="user_activity_user_update_successfully">User was successfully updated!</string>
+    <string name="join_fragment_join_button">Join</string>
+    <string name="join_fragment_name_empty_error">Please, write yout name!</string>
+    <string name="join_fragment_surname_empty_error">Please, write your surname!</string>
+    <string name="join_wait_fragment_wait_message">Your request is being reviewed by ADMIN, please wait.</string>
+    <string name="join_wait_fragment_refresh_button">Refresh</string>
+    <string name="join_fragment_email_empty_error">Please, write your email!</string>
+    <string name="join_wait_fragment_please_wait_message">ADMIN haven\'t accept yet, Please, wait</string>
+    <string name="registration_activity__verify">Verify</string>
     <!-- EOF -->
 
 </resources>

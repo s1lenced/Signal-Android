@@ -987,5 +987,6 @@
   <string name="prompt_passphrase_activity__signal_is_locked">Signal قفل شده است</string>
   <string name="RegistrationLockDialog_reminder">یادآور:</string>
   <string name="recipient_preferences__about">درباره ی ما</string>
-  <!--EOF-->
+    <string name="user_activity_user_name">Name</string>
+    <!--EOF-->
 </resources>

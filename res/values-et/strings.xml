@@ -1200,5 +1200,6 @@
   <string name="prompt_passphrase_activity__tap_to_unlock">KOPUTA AVAMISEKS</string>
   <string name="RegistrationLockDialog_reminder">Meeldetuletus:</string>
   <string name="recipient_preferences__about">Teave</string>
-  <!--EOF-->
+    <string name="user_activity_user_name">Name</string>
+    <!--EOF-->
 </resources>

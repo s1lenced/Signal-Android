@@ -214,7 +214,7 @@ public class WebRtcCallService extends Service implements InjectableType,
       else if (intent.getAction().equals(ACTION_REMOTE_HANGUP))             handleRemoteHangup(intent);
       else if (intent.getAction().equals(ACTION_SET_MUTE_AUDIO))            handleSetMuteAudio(intent);
       else if (intent.getAction().equals(ACTION_SET_MUTE_VIDEO))            handleSetMuteVideo(intent);
-      else if (intent.getAction().equals(ACTION_FLIP_CAMERA))           handleSetCameraFlip(intent);
+      else if (intent.getAction().equals(ACTION_FLIP_CAMERA))               handleSetCameraFlip(intent);
       else if (intent.getAction().equals(ACTION_BLUETOOTH_CHANGE))          handleBluetoothChange(intent);
       else if (intent.getAction().equals(ACTION_WIRED_HEADSET_CHANGE))      handleWiredHeadsetChange(intent);
       else if (intent.getAction().equals((ACTION_SCREEN_OFF)))              handleScreenOffChange(intent);

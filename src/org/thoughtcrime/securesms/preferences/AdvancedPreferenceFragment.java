@@ -212,12 +212,7 @@ public class AdvancedPreferenceFragment extends CorrectedPreferenceFragment {
         builder.setTitle(R.string.ApplicationPreferencesActivity_disable_signal_messages_and_calls);
         builder.setMessage(R.string.ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering);
         builder.setNegativeButton(android.R.string.cancel, null);
-        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialog, int which) {
-            new DisablePushMessagesTask((CheckBoxPreference)preference).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-          }
-        });
+        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> new DisablePushMessagesTask((CheckBoxPreference)preference).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR));
         builder.show();
       } else {
         Intent nextIntent = new Intent(getActivity(), ApplicationPreferencesActivity.class);

@@ -174,29 +174,30 @@ public class ContactSelectionListAdapter extends CursorRecyclerViewAdapter<ViewH
 
   @Override
   public void onBindItemViewHolder(ViewHolder viewHolder, @NonNull Cursor cursor) {
-    int    contactType = cursor.getInt(cursor.getColumnIndexOrThrow(ContactsDatabase.CONTACT_TYPE_COLUMN));
-    String name        = cursor.getString(cursor.getColumnIndexOrThrow(ContactsDatabase.NAME_COLUMN));
-    String number      = cursor.getString(cursor.getColumnIndexOrThrow(ContactsDatabase.NUMBER_COLUMN));
-    int    numberType  = cursor.getInt(cursor.getColumnIndexOrThrow(ContactsDatabase.NUMBER_TYPE_COLUMN));
-    String label       = cursor.getString(cursor.getColumnIndexOrThrow(ContactsDatabase.LABEL_COLUMN));
+//    int    contactType = cursor.getInt(cursor.getColumnIndexOrThrow(ContactsDatabase.CONTACT_TYPE_COLUMN));
+    String name        = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+    String number      = cursor.getString(cursor.getColumnIndexOrThrow("number"));
+//    int    numberType  = cursor.getInt(cursor.getColumnIndexOrThrow(ContactsDatabase.NUMBER_TYPE_COLUMN));
+//    String label       = cursor.getString(cursor.getColumnIndexOrThrow(ContactsDatabase.LABEL_COLUMN));
     String labelText   = ContactsContract.CommonDataKinds.Phone.getTypeLabel(getContext().getResources(),
-                                                                             numberType, label).toString();
+                                                                             1, "work").toString();
 
-    int color = (contactType == ContactsDatabase.PUSH_TYPE) ? drawables.getColor(0, 0xa0000000) :
+    int color = (1 == ContactsDatabase.PUSH_TYPE) ? drawables.getColor(0, 0xa0000000) :
                 drawables.getColor(1, 0xff000000);
 
     viewHolder.unbind(glideRequests);
-    viewHolder.bind(glideRequests, contactType, name, number, labelText, color, multiSelect);
+    viewHolder.bind(glideRequests, 1, name, number, labelText, color, multiSelect);
     viewHolder.setChecked(selectedContacts.contains(number));
   }
 
   @Override
   public int getItemViewType(@NonNull Cursor cursor) {
-    if (cursor.getInt(cursor.getColumnIndexOrThrow(ContactsDatabase.CONTACT_TYPE_COLUMN)) == ContactsDatabase.DIVIDER_TYPE) {
+    /*if (cursor.getInt(cursor.getColumnIndexOrThrow(ContactsDatabase.CONTACT_TYPE_COLUMN)) == ContactsDatabase.DIVIDER_TYPE) {
       return VIEW_TYPE_DIVIDER;
     } else {
       return VIEW_TYPE_CONTACT;
-    }
+    }*/
+    return VIEW_TYPE_CONTACT;
   }
 
 
@@ -243,7 +244,7 @@ public class ContactSelectionListAdapter extends CursorRecyclerViewAdapter<ViewH
     }
 
     Cursor cursor = getCursorAtPositionOrThrow(position);
-    String letter = cursor.getString(cursor.getColumnIndexOrThrow(ContactsDatabase.NAME_COLUMN));
+    String letter = cursor.getString(cursor.getColumnIndexOrThrow("name"));
 
     if (!TextUtils.isEmpty(letter)) {
       String firstChar = letter.trim().substring(0, 1).toUpperCase();
@@ -257,7 +258,7 @@ public class ContactSelectionListAdapter extends CursorRecyclerViewAdapter<ViewH
 
   private int getContactType(int position) {
     final Cursor cursor = getCursorAtPositionOrThrow(position);
-    return cursor.getInt(cursor.getColumnIndexOrThrow(ContactsDatabase.CONTACT_TYPE_COLUMN));
+    return /*cursor.getInt(cursor.getColumnIndexOrThrow(ContactsDatabase.CONTACT_TYPE_COLUMN));*/ 0;
   }
 
   private boolean isPush(int position) {
